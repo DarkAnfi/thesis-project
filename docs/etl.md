@@ -209,12 +209,12 @@ df4 = df4[df4['ens'] == 110]
 df4 = df4[df4['grade'] == 4]
 ```
 
-Se realiza una agregación de las variables 'prioritiy', 'preferential', 'beneficiary' y 'vulnerable' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://).
+Se realiza una agregación de las variables 'priority', 'preferential', 'beneficiary' y 'vulnerable' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://).
 
 ```python
 df4['vulnerable'] = 1
 a = {
-    'prioritiy': 'sum',
+    'priority': 'sum',
     'preferential': 'sum',
     'beneficiary': 'sum',
     'vulnerable': 'sum',
