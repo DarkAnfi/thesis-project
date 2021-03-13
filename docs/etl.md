@@ -319,12 +319,13 @@ for year in year_list:
     P = C / T
     if np.any(P == 0):
       df6.loc[E.index, 'slocal1'] = 0.0
+      df6.loc[E.index, 'slocal2'] = 0.0
     else:
+      a = 0.5
       S1 = np.power(np.e, -p[0, j] / P[0]) - np.power(np.e, -p[1, j] / P[1])
+      S2 = 1 - (np.asarray(np.power(p, a)) * np.asarray(np.power(P, (1-a)))).sum(axis=0) 
       df6.loc[E.index, 'slocal1'] = S1.T
-    a = 0.5
-    S2 = 1 - (np.asarray(np.power(p, a)) * np.asarray(np.power(P, (1-a)))).sum(axis=0) 
-    df6.loc[E.index, 'slocal2'] = S2.T * np.asarray(np.power(-1, np.floor(p[0, j] - P[0]) + 1))[0]
+      df6.loc[E.index, 'slocal2'] = S2.T * np.asarray(np.power(-1, np.floor(p[0, j] - P[0]) + 1))[0]
 ```
 
 Se eliminan las variables que no son necesarias para el dataset.
