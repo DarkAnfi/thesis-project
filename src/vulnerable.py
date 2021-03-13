@@ -1,3 +1,5 @@
+from os.path import join
+
 class Vulnerable:
   
   field_filter = {
