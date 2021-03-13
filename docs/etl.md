@@ -155,14 +155,18 @@ df3['attendance'] = pd.to_numeric(df3['attendance'], downcast='float')
 df3['attendance'] = df3['attendance'] / 100.
 ```
 
-Se realiza una agregación de las variables 'male', 'female' y 'enrolled' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://).
+Se filtran aquellos promedios generales distintos de 0.0.
 
 ```python
-df3['enrolled'] = 1
+df3 = df3[df3['mark'] != 0.0]
+```
+
+Se realiza una agregación de las variables 'mark' y 'attendance' mediante la función de media.
+
+```python
 a = {
-    'male': 'sum',
-    'female': 'sum',
-    'enrolled': 'sum',
+    'mark': 'mean',
+    'attendance': 'mean',
 }
 df3 = df3.groupby(by=['year', 'rbd'], as_index=False).agg(a)
 ```
