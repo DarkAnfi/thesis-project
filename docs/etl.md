@@ -8,13 +8,13 @@ Los datos de los directorios provienen de internet
 
 ### Extracción de los datos
 
-Se cargan los datos mediante la función [loadData](https://) la cual recibe como parametro un diccionario con los filtros de los nombres de columnas y una lista de la dirección de los archivos de la fuente de datos.
+Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/thesis-project/blob/main/src/load_data.py) la cual recibe como parametro un diccionario con los filtros de los nombres de columnas y una lista de la dirección de los archivos de la fuente de datos.
 
 ```python
 df1 = loadData(School.field_filter, School.file_names, delimiter=';', encoding='latin1')
 ```
 
-La configuración de carga de datos de escuelas se encuentra en la clase [School](https://).
+La configuración de carga de datos de escuelas se encuentra en la clase [School](https://github.com/DarkAnfi/thesis-project/blob/main/src/school.py).
 
 ### Transformación de los datos
 
@@ -37,7 +37,7 @@ df1 = df1[
 ]
 ```
 
-Habiendo variables nominales como 'dependence' y 'religion' y variables ordinales como 'annualpayment' y 'monthlypayment' es que es necesario realizar [one-hot encoding](https://) e [int enconding](https://) respectivamente.
+Habiendo variables nominales como 'dependence' y 'religion' y variables ordinales como 'annualpayment' y 'monthlypayment' es que es necesario realizar [one-hot encoding](https://github.com/DarkAnfi/thesis-project/blob/main/src/onehot_encoding.py) e [int enconding](https://github.com/DarkAnfi/thesis-project/blob/main/src/int_encoding.py) respectivamente.
 
 ```python
 df1 = onehotEncoding(df1, 'dependence', School.dependence)
@@ -56,7 +56,7 @@ df1 = df1.sort_values(['year', 'rbd'], ignore_index=True)
 
 ### Carga de los datos
 
-Se cargan los datos en un archivo .csv con la función [saveData](https://) para procesarlos más tarde.
+Se cargan los datos en un archivo .csv con la función [saveData](https://github.com/DarkAnfi/thesis-project/blob/main/src/save_data.py) para procesarlos más tarde.
 
 ```python
 saveData(df1, './dataset/school.csv')
@@ -68,13 +68,13 @@ Los datos de los alumnos matriculados provienen de internet
 
 ### Extracción de los datos
 
-Se cargan los datos mediante la función [loadData](https://).
+Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/thesis-project/blob/main/src/load_data.py).
 
 ```python
 df2 = loadData(Enrolled.field_filter, Enrolled.file_names, delimiter=';', encoding='latin1')
 ```
 
-La configuración de carga de datos de alumnos matriculados se encuentra en la clase [Enrolled](https://).
+La configuración de carga de datos de alumnos matriculados se encuentra en la clase [Enrolled](https://github.com/DarkAnfi/thesis-project/blob/main/src/enrolled.py).
 
 ### Transformación de los datos
 
@@ -85,13 +85,13 @@ df2 = df2[df2['ens'] == 110]
 df2 = df2[df2['grade'] == 4]
 ```
 
-La variable 'gender' es nominal por lo que se codifica mediante [one-hot encoding](https://).
+La variable 'gender' es nominal por lo que se codifica mediante [one-hot encoding](https://github.com/DarkAnfi/thesis-project/blob/main/src/onehot_encoding.py).
 
 ```python
 df2 = onehotEncoding(df2, 'gender', Enrolled.gender)
 ```
 
-Se realiza una agregación de las variables 'male', 'female' y 'enrolled' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://).
+Se realiza una agregación de las variables 'male', 'female' y 'enrolled' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://github.com/DarkAnfi/thesis-project/blob/main/src/onehot_encoding.py).
 
 ```python
 df2['enrolled'] = 1
@@ -112,7 +112,7 @@ df2 = df2.sort_values(['year', 'rbd'], ignore_index=True)
 
 ### Carga de los datos
 
-Se cargan los datos en un archivo .csv con la función [saveData](https://) para procesarlos más tarde.
+Se cargan los datos en un archivo .csv con la función [saveData](https://github.com/DarkAnfi/thesis-project/blob/main/src/save_data.py) para procesarlos más tarde.
 
 ```python
 saveData(df2, './dataset/enrolled.csv')
@@ -124,13 +124,13 @@ Los datos del rendimiento académico de los alumnos provienen de internet
 
 ### Extracción de los datos
 
-Se cargan los datos mediante la función [loadData](https://).
+Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/thesis-project/blob/main/src/load_data.py).
 
 ```python
 df3 = loadData(Performance.field_filter, Performance.file_names, delimiter=';', encoding='latin1')
 ```
 
-La configuración de carga de datos del rendimiento académico se encuentra en la clase [Performance](https://).
+La configuración de carga de datos del rendimiento académico se encuentra en la clase [Performance](https://github.com/DarkAnfi/thesis-project/blob/main/src/performance.py).
 
 ### Transformación de los datos
 
@@ -180,7 +180,7 @@ df3 = df3.sort_values(['year', 'rbd'], ignore_index=True)
 
 ### Carga de los datos
 
-Se cargan los datos en un archivo .csv con la función [saveData](https://) para procesarlos más tarde.
+Se cargan los datos en un archivo .csv con la función [saveData](https://github.com/DarkAnfi/thesis-project/blob/main/src/save_data.py) para procesarlos más tarde.
 
 ```python
 saveData(df3, './dataset/performance.csv')
@@ -192,13 +192,13 @@ Los datos de los alumnos vulnerables provienen de internet
 
 ### Extracción de los datos
 
-Se cargan los datos mediante la función [loadData](https://).
+Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/thesis-project/blob/main/src/load_data.py).
 
 ```python
 df4 = loadData(Vulnerable.field_filter, Vulnerable.file_names, delimiter=';', encoding='latin1')
 ```
 
-La configuración de carga de datos de alumnos vulneables se encuentra en la clase [Vulnerable](https://).
+La configuración de carga de datos de alumnos vulneables se encuentra en la clase [Vulnerable](https://github.com/DarkAnfi/thesis-project/blob/main/src/vulnerable.py).
 
 ### Transformación de los datos
 
@@ -209,7 +209,7 @@ df4 = df4[df4['ens'] == 110]
 df4 = df4[df4['grade'] == 4]
 ```
 
-Se realiza una agregación de las variables 'priority', 'preferential', 'beneficiary' y 'vulnerable' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://).
+Se realiza una agregación de las variables 'priority', 'preferential', 'beneficiary' y 'vulnerable' mediante la función de suma.
 
 ```python
 df4['vulnerable'] = 1
@@ -231,7 +231,7 @@ df4 = df4.sort_values(['year', 'rbd'], ignore_index=True)
 
 ### Carga de los datos
 
-Se cargan los datos en un archivo .csv con la función [saveData](https://) para procesarlos más tarde.
+Se cargan los datos en un archivo .csv con la función [saveData](https://github.com/DarkAnfi/thesis-project/blob/main/src/save_data.py) para procesarlos más tarde.
 
 ```python
 saveData(df4, './dataset/vulnerable.csv')
@@ -243,13 +243,13 @@ Los datos de los resultados SIMCE provienen de internet
 
 ### Extracción de los datos
 
-Se cargan los datos mediante la función [loadData](https://).
+Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/thesis-project/blob/main/src/load_data.py).
 
 ```python
 df5 = loadData(Simce.field_filter, Simce.file_names, sep='[|\t]', encoding='latin1')
 ```
 
-La configuración de carga de datos de los resultados SIMCE se encuentra en la clase [Simce](https://).
+La configuración de carga de datos de los resultados SIMCE se encuentra en la clase [Simce](https://github.com/DarkAnfi/thesis-project/blob/main/src/simce.py).
 
 ### Transformación de los datos
 
@@ -281,7 +281,7 @@ df5 = df5.sort_values(['year', 'rbd'], ignore_index=True)
 
 ### Carga de los datos
 
-Se cargan los datos en un archivo .csv con la función [saveData](https://) para procesarlos más tarde.
+Se cargan los datos en un archivo .csv con la función [saveData](https://github.com/DarkAnfi/thesis-project/blob/main/src/save_data.py) para procesarlos más tarde.
 
 ```python
 saveData(df5, './dataset/simce.csv')
