@@ -1,3 +1,8 @@
 # Proyecto de tesis
 
-Machine Learnign aplicado a la correlación entre la Segregación Socioeconómica del sistema escolar básico en Chile y el rendimiento en la prueba SIMCE
+[Proceso de ETL](https://darkanfi.github.io/thesis-project/etl)
+[Correlación](https://darkanfi.github.io/thesis-project/correlation)
+[Factor de inflación de la varianza](https://darkanfi.github.io/thesis-project/vif)
+[Modelos de línea base](https://darkanfi.github.io/thesis-project#base_line)
+[Modelos de aprendizaje profundo](https://darkanfi.github.io/thesis-project#deep_learning)
+[Modelos de aprendizaje en conjunto](https://darkanfi.github.io/thesis-project#ensemble_learning)
