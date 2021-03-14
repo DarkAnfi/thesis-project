@@ -25,6 +25,8 @@ display(pd.DataFrame(
 ))
 ```
 
+La tabla muestra las variables, el número de datos no nulos, el tipo de dato y el factor de inflación de la varianza.
+
 |                 | Non-Null Count  | Dtype   | VIF           |
 | :-------------- | :-------------: | :-----: | ------------: |
 | dependence0     | 19983 non-null  | int64   | 1.452752e+02  |
