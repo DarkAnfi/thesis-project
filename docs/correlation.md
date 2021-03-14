@@ -6,7 +6,7 @@ Se obtienen los datos del dataset generado mediante [ETL](https://darkanfi.githu
 df = pd.read_csv('./dataset.csv')
 df = df[df['langmark'] != 0]
 df = df[df['mathmark'] != 0]
-df = df.drop(columns=['langmark', 'mathmark']).reset_index()
+df = df.drop(columns=['langmark', 'mathmark']).reset_index(drop=True)
 ```
 
 Son 19.983 los registros validos para calcular su matríz de correlación.
