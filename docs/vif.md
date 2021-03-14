@@ -59,3 +59,5 @@ La tabla muestra las variables, el número de datos no nulos, el tipo de dato y 
 | notvulnerable   | 19983 non-null  | int64   | inf           |
 | slocal1         | 19983 non-null  | float64 | 3.498090e+00  |
 | slocal2         | 19983 non-null  | float64 | 3.814333e+00  |
+
+\< [Correlación](https://darkanfi.github.io/thesis-project/correlation) \| [Índice](https://darkanfi.github.io/thesis-project) \| [Modelos de línea base](https://darkanfi.github.io/thesis-project/base_line) \>
