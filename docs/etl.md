@@ -14,6 +14,8 @@ Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/
 df1 = loadData(School.field_filter, School.file_names, delimiter=';', encoding='latin1')
 ```
 
+Se cargaron un total de 48.058 registros de escuelas.
+
 La configuración de carga de datos de escuelas se encuentra en la clase [School](https://github.com/DarkAnfi/thesis-project/blob/main/src/school.py).
 
 ### Transformación de los datos
@@ -37,6 +39,8 @@ df1 = df1[
 ]
 ```
 
+Se filtran 24.816 registros de los 48.058 originales.
+
 Habiendo variables nominales como 'dependence' y 'religion' y variables ordinales como 'annualpayment' y 'monthlypayment' es que es necesario realizar [one-hot encoding](https://github.com/DarkAnfi/thesis-project/blob/main/src/onehot_encoding.py) e [int enconding](https://github.com/DarkAnfi/thesis-project/blob/main/src/int_encoding.py) respectivamente.
 
 ```python
@@ -46,6 +50,8 @@ df1 = onehotEncoding(df1, 'religion', School.religion)
 df1 = intEncoding(df1, 'annualpayment', School.payment)
 df1 = intEncoding(df1, 'monthlypayment', School.payment)
 ```
+
+Se codifican 3.918 datos a dependence0, 16.252 datos a dependence1, 22.747 datos a dependence2, 4.679 datos a dependence3, 210 datos a dependence4, 252 datos a dependence5, 19.757 datos a religion0, 12.156 datos a religion1, 1.721 datos a religion2, 1 dato a religion3, 10 datos a religion4, 0 datos a religion5, 3.186 datos a religion6, 10.605 datos 0 a annualpayment, 33.081 datos 1 a annualpayment, 2.347 datos 2 a annualpayment, 170 datos 3 a annualpayment, 252 datos 4 a annualpayment, 306 datos 5 a annualpayment, 1.297 datos 6 a annualpayment, 10.893 datos 0 a monthlypayment, 30.408 datos 1 a monthlypayment, 544 datos 2 a monthlypayment, 1.379 datos 3 a monthlypayment, 1.974 datos 4 a monthlypayment, 1.451 datos 5 a monthlypayment y 1.409 datos 6 a monthlypayment.
 
 Por último se filtran las columnas que van a ser necesarias para el dataset final y se ordenan por las variables 'year' y 'rbd'.
 
@@ -74,6 +80,8 @@ Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/
 df2 = loadData(Enrolled.field_filter, Enrolled.file_names, delimiter=';', encoding='latin1')
 ```
 
+Se cargaron 10.691.791 registros en total.
+
 La configuración de carga de datos de alumnos matriculados se encuentra en la clase [Enrolled](https://github.com/DarkAnfi/thesis-project/blob/main/src/enrolled.py).
 
 ### Transformación de los datos
@@ -85,11 +93,15 @@ df2 = df2[df2['ens'] == 110]
 df2 = df2[df2['grade'] == 4]
 ```
 
+Se filtran un total de 731.976 registros de los 10.691.791 originales.
+
 La variable 'gender' es nominal por lo que se codifica mediante [one-hot encoding](https://github.com/DarkAnfi/thesis-project/blob/main/src/onehot_encoding.py).
 
 ```python
 df2 = onehotEncoding(df2, 'gender', Enrolled.gender)
 ```
+
+Se codifican 374.113 datos de gender en male y 357.862 datos de gender en female.
 
 Se realiza una agregación de las variables 'male', 'female' y 'enrolled' mediante la función de suma aprovechando las propiedades del [one-hot encoding](https://github.com/DarkAnfi/thesis-project/blob/main/src/onehot_encoding.py).
 
@@ -102,6 +114,8 @@ a = {
 }
 df2 = df2.groupby(by=['year', 'rbd'], as_index=False).agg(a)
 ```
+
+Los datos quedan agrupados en un total de 22.325 escuelas.
 
 Por último se filtran las columnas que van a ser necesarias para el dataset final y se ordenan por las variables 'year' y 'rbd'.
 
@@ -130,6 +144,8 @@ Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/
 df3 = loadData(Performance.field_filter, Performance.file_names, delimiter=';', encoding='latin1')
 ```
 
+Se cargan un total de 9.767.517 registros de rendimiento académico.
+
 La configuración de carga de datos del rendimiento académico se encuentra en la clase [Performance](https://github.com/DarkAnfi/thesis-project/blob/main/src/performance.py).
 
 ### Transformación de los datos
@@ -140,6 +156,8 @@ Se necesita saber el rendimiento académico de los estudiantes de 4° básico, e
 df3 = df3[df3['ens'] == 110]
 df3 = df3[df3['grade'] == 4]
 ```
+
+Se filtraron 778.424 registros de los 9.767.517 registros originales
 
 En las fuentes de datos originales la variable promedio general, alojada en la variable 'mark', es una cadena de texto que representa un número flotante separado por 'coma', por lo que se realiza una transformación de esta variable para que pueda ser tratado como un dato flotante como tal.
 
@@ -161,6 +179,8 @@ Se filtran aquellos promedios generales distintos de 0.0.
 df3 = df3[df3['mark'] != 0.0]
 ```
 
+Se filtraron 733.306 registros de los 778.424 registros anteriores
+
 Se realiza una agregación de las variables 'mark' y 'attendance' mediante la función de media.
 
 ```python
@@ -170,6 +190,8 @@ a = {
 }
 df3 = df3.groupby(by=['year', 'rbd'], as_index=False).agg(a)
 ```
+
+Los datos quedan agrupados en un total de 22.330 escuelas.
 
 Por último se filtran las columnas que van a ser necesarias para el dataset final y se ordenan por las variables 'year' y 'rbd'.
 
@@ -198,6 +220,8 @@ Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/
 df4 = loadData(Vulnerable.field_filter, Vulnerable.file_names, delimiter=';', encoding='latin1')
 ```
 
+Se cargaron 8.902.761 registros.
+
 La configuración de carga de datos de alumnos vulneables se encuentra en la clase [Vulnerable](https://github.com/DarkAnfi/thesis-project/blob/main/src/vulnerable.py).
 
 ### Transformación de los datos
@@ -208,6 +232,8 @@ Se necesitan los datos de los estudiantes de 4° básico, por lo que se filtran 
 df4 = df4[df4['ens'] == 110]
 df4 = df4[df4['grade'] == 4]
 ```
+
+Se filtraron 549.135 registros de los 8.902.761 registros originales.
 
 Se realiza una agregación de las variables 'priority', 'preferential', 'beneficiary' y 'vulnerable' mediante la función de suma.
 
@@ -221,6 +247,8 @@ a = {
 }
 df4 = df4.groupby(by=['year', 'rbd'], as_index=False).agg(a)
 ```
+
+Los datos quedan agrupados en un total de 21.960 escuelas.
 
 Por último se filtran las columnas que van a ser necesarias para el dataset final y se ordenan por las variables 'year' y 'rbd'.
 
@@ -249,6 +277,8 @@ Se cargan los datos mediante la función [loadData](https://github.com/DarkAnfi/
 df5 = loadData(Simce.field_filter, Simce.file_names, sep='[|\t]', encoding='latin1')
 ```
 
+Se cargaron un total de 22.365 registros.
+
 La configuración de carga de datos de los resultados SIMCE se encuentra en la clase [Simce](https://github.com/DarkAnfi/thesis-project/blob/main/src/simce.py).
 
 ### Transformación de los datos
@@ -259,6 +289,8 @@ Dado que pueden existir registros invalidos para 'langmark' y 'mathmark' es que 
 for field in ['langmark', 'mathmark']:
   df5.loc[df5[field] < 0, field] = 0
 ```
+
+Hubo 1.470 datos invalidos para 'langmark' y 1.479 datos invalidos para 'mathmark'.
 
 Según los niveles de aprendizaje SIMCE, se categorizan las variables 'langmark' y 'mathmark' en las variables 'langlevel' y 'mathlevel' respectivamente.
 
@@ -289,16 +321,25 @@ saveData(df5, './dataset/simce.csv')
 
 ## Dataset final
 
+Los datos provienen de los archivos generados anteriormente.
+
 ### Extracción de los datos
+
+Se realiza un merge entre todas las fuentes de datos, agrupadas por 'year' y 'rbd'
+
 ```python
 df6 = pd.read_csv('./dataset/school.csv')
-df6.merge(df6, pd.read_csv('./dataset/enrolled.csv'), how='inner', on=['agno', 'rbd'])
-df6.merge(df6, pd.read_csv('./dataset/performance.csv'), how='inner', on=['agno', 'rbd'])
-df6.merge(df6, pd.read_csv('./dataset/vulnerable.csv'), how='inner', on=['agno', 'rbd'])
-df6.merge(df6, pd.read_csv('./dataset/simce.csv'), how='inner', on=['agno', 'rbd'])
+df6.merge(df6, pd.read_csv('./dataset/enrolled.csv'), how='inner', on=['year', 'rbd'])
+df6.merge(df6, pd.read_csv('./dataset/performance.csv'), how='inner', on=['year', 'rbd'])
+df6.merge(df6, pd.read_csv('./dataset/vulnerable.csv'), how='inner', on=['year', 'rbd'])
+df6.merge(df6, pd.read_csv('./dataset/simce.csv'), how='inner', on=['year', 'rbd'])
 ```
 
+Se tiene un total de 21.791 registros
+
 ### Transformación de los datos
+
+Se calculan los índices de segregación de Rojas (2019) y Alonso-Villar y Del Río (2010).
 
 ```python
 df6['notvulnerable'] = df6['enrolled'] - df6['vulnerable']
@@ -336,6 +377,8 @@ df6 = df6.drop(columns=['year', 'city', 'rbd'])
 
 ## Carga de los datos
 
+Se cargan los datos en un archivo .csv con la función [saveData](https://github.com/DarkAnfi/thesis-project/blob/main/src/save_data.py) para procesarlos más tarde.
+
 ```python
-saveData(df6, './dataset/dataset.csv')
+saveData(df6, './dataset.csv')
 ```
