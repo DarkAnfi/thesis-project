@@ -49,4 +49,4 @@ plt.show()
 
 ![mathmark corr matrix heatmap](https://raw.githubusercontent.com/DarkAnfi/thesis-project/main/src/math_heatmap.png "Corr matrix heatmap for mathmark")
 
-[Proceso de ETL](https://darkanfi.github.io/thesis-project/etl) [Indice](https://darkanfi.github.io/thesis-project) [Factor de inflación de la varianza](https://darkanfi.github.io/thesis-project/vif)
+\< [Proceso de ETL](https://darkanfi.github.io/thesis-project/etl) \| [Indice](https://darkanfi.github.io/thesis-project) \| [Factor de inflación de la varianza](https://darkanfi.github.io/thesis-project/vif) \>
