@@ -383,4 +383,4 @@ Se cargan los datos en un archivo .csv con la función [saveData](https://github
 saveData(df6, './dataset.csv')
 ```
 
-[Indice](https://darkanfi.github.io/thesis-project) [Correlación](https://darkanfi.github.io/thesis-project/correlation)
+\| [Indice](https://darkanfi.github.io/thesis-project) \| [Correlación](https://darkanfi.github.io/thesis-project/correlation) \>
